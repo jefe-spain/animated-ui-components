@@ -30,10 +30,20 @@ module.exports = {
       },
       keyframes: {
         swing: {
-          "0%, 100%": { transform: "translateY(0px)" },
-          "50%": { transform: "translateY(-100px)" },
-        },
+          '0%': { 
+            transform: 'rotate(-50deg) translateY(0px) scale(1)'
+          },
+          '50%': { 
+            transform: 'rotate(50deg) translateY(-30px) scale(1.05)'
+          },
+          '100%': { 
+            transform: 'rotate(-50deg) translateY(0px) scale(1)'
+          }
+        }
       },
+      animation: {
+        swing: 'swing var(--duration) var(--delay) ease-in-out infinite',
+      }
     },
   },
   plugins: [

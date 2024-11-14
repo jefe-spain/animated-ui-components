@@ -1,8 +1,17 @@
+'use client';
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { motion } from "framer-motion";
 
 export default function Header() {
+  const pathname = usePathname();
   return (
-    <header className="absolute top-4 md:top-6 w-full z-30 pb-4 md:pb-6 border-b [border-image:linear-gradient(to_right,transparent,theme(colors.indigo.300/.4),transparent)1] dark:[border-image:linear-gradient(to_right,transparent,theme(colors.indigo.300/.16),transparent)1] shadow-[0_1px_0_0_theme(colors.white/.2)] dark:shadow-none">
+    <motion.header
+      initial={{ x: -100, opacity: 0 }}
+      animate={{ x: 0, opacity: 1 }}
+      transition={{ duration: 0.5, ease: "easeOut" }}
+      className="absolute top-4 md:top-6 w-full z-30 pb-4 md:pb-6 border-b [border-image:linear-gradient(to_right,transparent,theme(colors.indigo.300/.4),transparent)1] dark:[border-image:linear-gradient(to_right,transparent,theme(colors.indigo.300/.16),transparent)1] shadow-[0_1px_0_0_theme(colors.white/.2)] dark:shadow-none"
+    >
       <div className="px-4 sm:px-6">
         <div className="max-w-3xl mx-auto">
           <div className="relative flex items-center h-12 bg-gradient-to-b from-white/90 to-white/70 dark:from-gray-700/80 dark:to-gray-700/70 rounded-lg px-3 shadow">
@@ -32,11 +41,15 @@ export default function Header() {
               </Link>
             </div>
             {/* Navigation links */}
-            <nav className="flex-1">
+           <nav className="flex-1">
               <ul className="flex items-center justify-center sm:gap-x-3 text-sm font-medium">
                 <li>
                   <Link
-                    className="text-gray-800 dark:text-gray-200 rounded-lg hover:bg-indigo-100 dark:hover:bg-gray-800/30 py-1.5 px-3"
+                    className={`text-gray-800 hover:text-indigo-600 hover:font-bold dark:text-gray-200 rounded-lg py-1.5 px-3 ${
+                      pathname === '/updates' 
+                        ? 'bg-indigo-100 font-bold text-indigo-600'
+                        : 'hover:bg-indigo-100 '
+                    }`}
                     href="/updates"
                   >
                     Updates
@@ -44,7 +57,11 @@ export default function Header() {
                 </li>
                 <li>
                   <Link
-                    className="text-gray-800 dark:text-gray-200 rounded-lg hover:bg-indigo-100 dark:hover:bg-gray-800/30 transition-colors py-1.5 px-3"
+                    className={`text-gray-800 hover:text-indigo-600 hover:font-bold dark:text-gray-200 rounded-lg py-1.5 px-3 ${
+                      pathname === '/faq'
+                      ? 'bg-indigo-100 font-bold text-indigo-600'
+                      : 'hover:bg-indigo-100'
+                    }`}
                     href="/faq"
                   >
                     FAQ
@@ -52,9 +69,13 @@ export default function Header() {
                 </li>
                 <li>
                   <Link
-                    className="text-gray-800 dark:text-gray-200 rounded-lg hover:bg-indigo-100 dark:hover:bg-gray-800/30 transition-colors py-1.5 px-3"
+                    className={`text-gray-800 hover:text-indigo-600 hover:font-bold dark:text-gray-200 rounded-lg py-1.5 px-3 ${
+                      pathname === '/contact'
+                        ? 'bg-indigo-100 font-bold text-indigo-600'
+                        : 'hover:bg-indigo-100'
+                    }`}
                     href="/contact"
-                  >
+                  > 
                     Contact us
                   </Link>
                 </li>
@@ -63,6 +84,6 @@ export default function Header() {
           </div>
         </div>
       </div>
-    </header>
+    </motion.header>
   );
 }
