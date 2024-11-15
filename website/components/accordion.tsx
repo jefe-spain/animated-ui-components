@@ -57,7 +57,7 @@ export default function Accordion({
         className={`grid text-sm text-gray-600 dark:text-gray-500 overflow-hidden transition-all duration-300 ease-in-out ${accordionOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}
       >
         <div className="overflow-hidden">
-          <p className="px-4 pb-2">{children}</p>
+          <div className="px-4 pb-2">{children}</div>
         </div>
       </div>
     </div>

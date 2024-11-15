@@ -58,6 +58,18 @@ export default function Header() {
                 <li>
                   <Link
                     className={`text-gray-800 hover:text-indigo-600 hover:font-bold dark:text-gray-200 rounded-lg py-1.5 px-3 ${
+                      pathname === '/components' 
+                        ? 'bg-indigo-100 font-bold text-indigo-600'
+                        : 'hover:bg-indigo-100 '
+                    }`}
+                    href="/components"
+                  >
+                    Components
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    className={`text-gray-800 hover:text-indigo-600 hover:font-bold dark:text-gray-200 rounded-lg py-1.5 px-3 ${
                       pathname === '/faq'
                       ? 'bg-indigo-100 font-bold text-indigo-600'
                       : 'hover:bg-indigo-100'
